@@ -1,9 +1,10 @@
 const bcrypt = require("bcryptjs");
 const Users = require("../models/User");
-
+const Todo = require("../models/Todo");
 module.exports = {
   getAllUser: async (req, res) => {
-    const users = await Users.findAll();
+    // ketika kita findAll kita masukan include Todo
+    const users = await Users.findAll({ include: Todo });
     res.json({
       message: "berhasil mendapatakan data",
       users,

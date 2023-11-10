@@ -18,6 +18,7 @@ const Todo = sequelize.define(
       defaultValue: false,
       allowNull: false,
     },
+    // FORENGKEY untuk user
     user_id: {
       type: DataTypes.INTEGER,
     },

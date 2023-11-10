@@ -2,6 +2,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 // import model databases
 const sequelize = require("../config/db");
+const Todo = require("../models/Todo");
 // buat nama variable untuk table
 // sequelize.define untuk membuat tabel
 // yang bernama User
@@ -30,5 +31,10 @@ const User = sequelize.define(
     // timestamps: false,
   }
 );
+// untuk menambah relasi kita menggunkan cara dibawha
+// artinya user memiliki banyak todo
+//  yang mana forengkey nya terdapat pada
+// model todo yang bernama user_id
 
+User.hasMany(Todo, { foreignKey: "user_id" });
 module.exports = User;
