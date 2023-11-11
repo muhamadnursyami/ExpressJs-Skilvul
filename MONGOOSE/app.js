@@ -1,9 +1,9 @@
 const express = require("express");
-const app = express();
 
-const PORT = process.env.PORT || 3000;
 const db = require("./config/db");
 const allRoutes = require("./routes");
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 db.then(() => {
   console.log("database connect mongodb");

@@ -2,11 +2,14 @@ const Todo = require("../models/todo");
 
 module.exports = {
   getAllTodo: async (req, res) => {
+    const user = req.user;
     // mencari semua data di todo kemudian kita ingin populate
     // atau bacanya ingin mau unboxing dari userID itu isinya milik siapa
     // dan kita ingin hanya menampilkan id dan name saja.
-
-    const todos = await Todo.find().populate("userID", ["id", "name"]);
+    const todos = await Todo.find({ userID: user.id }).populate("userID", [
+      "id",
+      "name",
+    ]);
     // jika ingin menampilkan semua datanya pakai ini
     // const todos = await Todo.find().populate("userID");
 
