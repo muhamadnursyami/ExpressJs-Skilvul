@@ -13,7 +13,10 @@ module.exports = {
       console.log(user.password, userLogin.password);
       if (user.password !== userLogin.password) throw new Error("invalid user");
 
-      const token = jwt.sign({ id: user._id, email: user.email }, "12345");
+      const token = jwt.sign(
+        { id: user._id, email: user.email },
+        process.env.JWT_KEY
+      );
 
       res.json({
         message: "login successfull",
